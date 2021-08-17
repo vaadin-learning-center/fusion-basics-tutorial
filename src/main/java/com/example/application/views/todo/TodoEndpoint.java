@@ -1,11 +1,10 @@
 package com.example.application.views.todo;
 
 import java.util.List;
-
 import com.example.application.db.Todo;
 import com.example.application.db.TodoRepo;
+import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.server.connect.Endpoint;
-import com.vaadin.flow.server.connect.auth.AnonymousAllowed;
 
 @Endpoint
 @AnonymousAllowed
