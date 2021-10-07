@@ -16,8 +16,8 @@ import org.vaadin.artur.helpers.LaunchUtil;
  *
  */
 @SpringBootApplication
-@Theme(value = "myapp")
-@PWA(name = "Vaadin Todo", shortName = "Vaadin Todo")
+@Theme(value = "vaadintodo")
+@PWA(name = "Vaadin Todo", shortName = "Vaadin Todo", offlineResources = {"images/logo.png"})
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
 
     public static void main(String[] args) {
