@@ -2,9 +2,8 @@ import {
   LitElement,
   html,
   css,
-  customElement,
-  internalProperty,
-} from "lit-element";
+} from "lit";
+import { customElement, state } from 'lit/decorators.js';
 
 import "@vaadin/vaadin-text-field";
 import "@vaadin/vaadin-button";
@@ -16,7 +15,7 @@ import TodoModel from "../../generated/com/example/application/db/TodoModel";
 
 @customElement("todo-view")
 export class TodoView extends LitElement {
-  @internalProperty()
+  @state()
   private todos: Todo[] = [];
   private binder = new Binder(this, TodoModel);
 
