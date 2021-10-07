@@ -5,7 +5,7 @@ import '@vaadin/vaadin-text-field';
 import '@vaadin/vaadin-button';
 import '@vaadin/vaadin-checkbox';
 import { Binder, field } from '@vaadin/form';
-import { getTodos, saveTodo } from '../../generated/TodoEndpoint';
+import { getTodos, save } from '../../generated/TodoEndpoint';
 import Todo from '../../generated/com/example/application/db/Todo';
 import TodoModel from '../../generated/com/example/application/db/TodoModel';
 
@@ -50,7 +50,7 @@ export class TodoView extends LitElement {
   }
 
   async addTask() {
-    const createdTodo = await this.binder.submitTo(saveTodo);
+    const createdTodo = await this.binder.submitTo(save);
     if (createdTodo) {
       this.todos = [...this.todos, createdTodo];
       this.binder.clear();
@@ -60,6 +60,6 @@ export class TodoView extends LitElement {
   updateTodoState(todo: Todo, done: boolean) {
     const updatedTodo = { ...todo, done };
     this.todos = this.todos.map((t) => (t.id === todo.id ? updatedTodo : t));
-    saveTodo(updatedTodo);
+    save(updatedTodo);
   }
 }

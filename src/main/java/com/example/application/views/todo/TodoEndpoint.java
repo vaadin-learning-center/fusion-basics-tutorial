@@ -22,7 +22,7 @@ public class TodoEndpoint {
     return repo.findAll();
   }
 
-  public Todo saveTodo(Todo todo) {
+  public Todo save(Todo todo) {
     return repo.save(todo);
   }
 }
