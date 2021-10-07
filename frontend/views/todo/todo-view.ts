@@ -1,19 +1,15 @@
-import {
-  LitElement,
-  html,
-  css,
-} from "lit";
+import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 
-import "@vaadin/vaadin-text-field";
-import "@vaadin/vaadin-button";
-import "@vaadin/vaadin-checkbox";
-import { Binder, field } from "@vaadin/form";
-import { getTodos, saveTodo } from "../../generated/TodoEndpoint";
-import Todo from "../../generated/com/example/application/db/Todo";
-import TodoModel from "../../generated/com/example/application/db/TodoModel";
+import '@vaadin/vaadin-text-field';
+import '@vaadin/vaadin-button';
+import '@vaadin/vaadin-checkbox';
+import { Binder, field } from '@vaadin/form';
+import { getTodos, saveTodo } from '../../generated/TodoEndpoint';
+import Todo from '../../generated/com/example/application/db/Todo';
+import TodoModel from '../../generated/com/example/application/db/TodoModel';
 
-@customElement("todo-view")
+@customElement('todo-view')
 export class TodoView extends LitElement {
   @state()
   private todos: Todo[] = [];
@@ -29,15 +25,8 @@ export class TodoView extends LitElement {
   render() {
     return html`
       <div class="form">
-        <vaadin-text-field
-          ...=${field(this.binder.model.task)}
-        ></vaadin-text-field>
-        <vaadin-button
-          theme="primary"
-          @click=${this.addTask}
-          ?disabled=${this.binder.invalid}
-          >Add</vaadin-button
-        >
+        <vaadin-text-field ...=${field(this.binder.model.task)}></vaadin-text-field>
+        <vaadin-button theme="primary" @click=${this.addTask} ?disabled=${this.binder.invalid}>Add</vaadin-button>
       </div>
       <div class="todos">
         ${this.todos.map(
@@ -45,8 +34,7 @@ export class TodoView extends LitElement {
             <div class="todo">
               <vaadin-checkbox
                 ?checked=${todo.done}
-                @checked-changed=${(e: CustomEvent) =>
-                  this.updateTodoState(todo, e.detail.value)}
+                @checked-changed=${(e: CustomEvent) => this.updateTodoState(todo, e.detail.value)}
               ></vaadin-checkbox>
               <span>${todo.task}</span>
             </div>
