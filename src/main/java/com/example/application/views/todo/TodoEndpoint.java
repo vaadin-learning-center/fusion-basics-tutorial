@@ -4,7 +4,8 @@ import java.util.List;
 import com.example.application.db.Todo;
 import com.example.application.db.TodoRepo;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.flow.server.connect.Endpoint;
+import com.vaadin.fusion.Endpoint;
+import com.vaadin.fusion.Nonnull;
 
 @Endpoint
 @AnonymousAllowed
@@ -16,11 +17,12 @@ public class TodoEndpoint {
     this.repo = repo;
   }
 
-  public List<Todo> getTodos() {
+  @Nonnull
+  public List<@Nonnull Todo> getTodos() {
     return repo.findAll();
   }
 
-  public Todo saveTodo(Todo todo) {
+  public Todo save(Todo todo) {
     return repo.save(todo);
   }
 }
